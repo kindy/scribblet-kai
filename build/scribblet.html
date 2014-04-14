@@ -1,0 +1,32 @@
+<!--
+Scribblet (http://scribblet.org)
+Copyright (c) 2009 Kai Jäger. Some rights reserved.
+
+Use of this source code is governed by an MIT-style license that can be
+found in the license.txt file. 
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Scribblet</title>	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+	<a href="#">Scribble here!</a>
+	
+	<script type="text/javascript">
+		/*<![CDATA[*/
+		(function() {
+			var SOURCE;
+			if (/MSIE/.test(navigator.userAgent) && !window.opera) {		
+				SOURCE = "javascript:(function(){var c,d,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,z,A,B,e,C;d=['red','lime','blue','black'];B='';i=window;j=document;k=j.body;l=j.documentElement||k;function D(a){return j.createElement(a)};function E(a,b){a.appendChild(b)};function F(a,b){a.removeChild(b)};C=l.scrollTop;g='absolute';h='px';o=0;n=d[0];v=[];p=D('div');with(p.style){position=g;left=top='0';zIndex='200';cursor='crosshair';background='url(_0.gif)'}E(k,p);j.namespaces.add('v','urn:schemas-microsoft-com:vml','#default#VML');m=D('input');with(m.style){position=g;left='-1000'+h;top=C+h}m.onpaste=function(){u=i.clipboardData.getData('Text');if(u.length<3){return}v=u.split(/,/g);u=v.shift()-l.clientWidth;o=parseInt(v.shift());n=d[o];G();H();j.onfocus();i.resizeBy(u,0)};q=j.onfocus=function(){with(m){value=B;focus();select()}};E(k,m);q();function G(){var a=[];p.innerHTML='';r=v.length;q=0;z=-1;A=-1;while(q<r){if(v[q]==-1){J(a);z=-1;a.length=0;++q}else{z=v[q++];A=v[q++]-C;a.push(z+'px,'+A+'px')}}J(a)};G();function H(){v.unshift(o);v.unshift(l.clientWidth);m.value=B=v.join(',');v.shift();v.shift();m.select();G()}function I(x,y){v.push(x,y)}function J(a){p.insertAdjacentHTML('beforeEnd','<v:polyline points=\\''+a.join(' ')+'\\' filled=\\'false\\' strokecolor=\\''+n+'\\' strokeweight=\\'3px\\'></v:polyline>')}w=false;q=i.onresize=function(){with(p.style){top=C+h;width=l.clientWidth-20+h;height=l.clientHeight+h}G()};q();q=i.onscroll=function(){C=l.scrollTop;p.style.top=C+h;m.style.top=C+h;G()};q();j.onmousedown=function(){e=i.event;w=true;z=e.clientX;A=e.clientY;I(z,A+C)};j.onmouseup=function(){e=i.event;w=false;I(e.clientX,e.clientY+C);v.push(-1);H()};j.onmousemove=function(){e=i.event;if(!w)return;q=e.clientX;r=e.clientY;I(q,r+C);J([z+'px,'+A,q+'px,'+r+h]);z=q;A=r};m.onkeyup=function(){e=i.event;switch(e.keyCode){case 27:case 88:F(k,p);F(k,m);j.onmousedown=j.onmouseup=j.onmousemove=j.onfocus=i.onresize=i.onscroll=null;break;case 38:case 40:o+=39-e.keyCode;if(o<0)o=d.length-1;n=d[o%d.length];H();break;case 69:i.location='mailto:?body='+B;break;case 46:v.length=0;H()}}})();void(0);";
+			} else {
+				SOURCE = "javascript:(function(){var c,d,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D;d=['red','lime','blue','black'];f=3;C='';j=window;k=document;l=k.body;function E(a){return k.createElement(a)};function F(a,b){a.appendChild(b)};D=l.scrollTop;g='absolute';h='px';i='0px';q=0;p=d[0];y=[];r=E('canvas');with(r.style){position=g;left=top=i;zIndex='200';cursor='crosshair'}F(l,r);s=r.getContext('2d');n=E('div');F(n,k.createTextNode('Press \\'E\\' to email scribble, CTRL + C to copy scribble to clipboard, CTRL + V to paste scribble from clipboard, UP/DOWN to change color, DEL to clear, ESC or \\'X\\' to close.'));with(n.style){background='#FFF';border='1px solid #000';padding='5px';font='bold 11px sans-serif';position=g;zIndex='199';background='#F2F2F2';opacity=MozOpacity='0.9';top=i}F(l,n);m=E('input');with(m.style){position=g;left='-1000'+h;top=D+h}k.onfocus=function(){with(m){value=C;focus();select()}};F(l,m);k.onfocus();function G(){if(m.value.length<3){m.value='';return}y=m.value.split(/,/g);j.resizeBy(y.shift()-l.clientWidth,0);q=parseInt(y.shift());p=d[q];H();I();k.onfocus()}m.addEventListener('input',G,false);function H(){with(s){clearRect(0,0,r.offsetWidth,r.offsetHeight);u=y.length;t=0;A=-1;B=-1;beginPath();while(t<u){if(y[t]==-1){strokeStyle=p;lineWidth=f;stroke();beginPath();A=-1;++t}else if(A==-1){A=y[t++];B=y[t++]-D;moveTo(A,B)}else{lineTo(y[t++],y[t++]-D)}}stroke()}};function I(){y.unshift(q);y.unshift(l.clientWidth);C=y.join(',');m.value=C;m.focus();m.select();y.shift();y.shift()}z=false;t=j.onresize=function(){r.style.top=D+h;r.width=l.clientWidth;r.height=j.innerHeight;H()};t();t=j.onscroll=function(){D=l.scrollTop||k.documentElement.scrollTop;n.style.top=D+h;r.style.top=D+h;m.style.top=D+h;H()};t();r.onmousedown=function(e){z=true;A=e.clientX;B=e.clientY;y.push(A);y.push(B+D)};r.onmouseup=function(e){z=false;y.push(e.clientX);y.push(e.clientY+D);y.push(-1);I();H()};r.onmousemove=function(e){if(!z)return;t=e.clientX;u=e.clientY;y.push(t);y.push(u+D);with(s){beginPath();moveTo(A,B);lineTo(t,u);strokeStyle=p;lineWidth=f;stroke()}A=t;B=u};m.onkeyup=function(e){switch(e.keyCode){case 86:if(e.ctrlKey)G();break;case 27:case 88:l.removeChild(r);l.removeChild(n);l.removeChild(m);k.onfocus=j.onresize=j.onscroll=null;m.removeEventListener('input',G,false);break;case 38:case 40:q+=39-e.keyCode;if(q<0)q=d.length-1;p=d[q%d.length];I();H();break;case 69:w=E('form');with(w){action='mailto:';method='post';enctype='text/plain';style.visibility='hidden'}x=E('textarea');x.name='Message';x.value='\\n1. Go to: '+j.location.href+'\\n\\n2. Press \\'Scribble here!\\' (or go to http://scribblet.org)\\n\\n3. Paste this into the document:\\n'+C;F(w,x);F(l,w);try{if(escape(x.value).length>=1980)throw 0;w.submit()}catch(e){j.prompt('Could not create email. Copy & paste this instead:',x.value);j.location.href='mailto:'}l.removeChild(w);break;case 46:y.length=0;I();H()}}})();void(0);";
+			}
+			document.getElementsByTagName('a')[0].href = SOURCE;
+		})();
+		/*]]>*/
+	</script>
+</body>
+</html>
